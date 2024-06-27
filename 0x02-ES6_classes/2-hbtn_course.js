@@ -1,47 +1,18 @@
+/* eslint-disable no-underscore-dangle */
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    // Verify attribute types during obj creation
-    if (Object.getPrototypeOf(name) !== String.prototype)
-      throw TypeError("name must be a string");
-    if (Object.getPrototypeOf(length) !== Number.prototype)
-      throw TypeError("length must be a number");
-    if (Object.getPrototypeOf(students) !== Array.prototype)
-      throw TypeError("students must be an array of strings");
-    students.forEach((student) => {
-      if (Object.getPrototypeOf(student) !== String.prototype)
-        throw TypeError("students must be an array of strings");
-    });
+    if (typeof name !== 'string') throw new TypeError('Name must be a string');
+    if (typeof length !== 'number') {
+      throw new TypeError('Length must be a number');
+    }
+    if (typeof students !== 'object') {
+      throw TypeError('Students must be an object');
+    }
 
-    // Create objs
     this._name = name;
     this._length = length;
     this._students = students;
   }
-
-  // Setters
-  set name(newName) {
-    if (Object.getPrototypeOf(newName) !== String.prototype)
-      throw TypeError("name must be a string");
-    this._name = newName;
-  }
-
-  set length(newLen) {
-    if (Object.getPrototypeOf(newLen) !== Number.prototype)
-      throw TypeError("length must be a number");
-    this._length = newLen;
-  }
-
-  set students(newStudents) {
-    if (Object.getPrototypeOf(newStudents) !== Array.prototype)
-      throw TypeError("students must be an array");
-    newStudents.forEach((student) => {
-      if (Object.getPrototypeOf(student) !== String.prototype)
-        throw TypeError("students must be an array of strings");
-    });
-    this._students = newStudents;
-  }
-
-  // Getters
 
   get name() {
     return this._name;
@@ -54,5 +25,23 @@ export default class HolbertonCourse {
   get students() {
     return this._students;
   }
-}
 
+  set name(name) {
+    if (typeof name !== 'string') throw new TypeError('Name must be a string');
+    this._name = name;
+  }
+
+  set length(length) {
+    if (typeof length !== 'number') {
+      throw new TypeError('Length must be a number');
+    }
+    this._length = length;
+  }
+
+  set students(students) {
+    if (typeof students !== 'object') {
+      throw TypeError('Students must be an object');
+    }
+    this._students = students;
+  }
+}
